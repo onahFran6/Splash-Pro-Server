@@ -4,9 +4,15 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
+const paginate = require("express-paginate");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var authRouter = require("./routes/auth");
+var googleLoginRouter = require("./routes/googleLogin");
+var shortletsRouter = require("./routes/shortlets");
+var paymentRouter = require("./routes/bookPayment");
+var verifyPaymentRouter = require("./routes/verifyPayment");
 
 var app = express();
 
@@ -34,7 +40,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api/v1/googleLogin", googleLoginRouter);
+app.use("/api/v1/oauth/google", authRouter);
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/shortlets", shortletsRouter);
+app.use("/api/v1/payment", paymentRouter);
+app.use("/api/v1/payment/callback", verifyPaymentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
