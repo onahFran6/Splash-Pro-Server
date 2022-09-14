@@ -61,7 +61,7 @@ yarn install
 
 ```
 
-check the local.env to get the list of the  .env file
+check the sample.env to get the list of the variable in  .env file
 requires for this server to run successfully
 
 ```
@@ -84,7 +84,8 @@ yarn run start
 The following are the requirement for the project
 
 - Node install in the Pc
-- All variables in the .env file
+-Obtain all variables in the sample.env file and create a .env file
+for the project
 
 # Project tree
 
